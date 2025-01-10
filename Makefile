@@ -1,19 +1,19 @@
 .SUFFIXES: .img .bin
 AS = fasm
 
-all: kernel.img
+all: boot.img
 
 .bin.img:
 	cp $< $@
 	truncate -s 1440k $@
 
 .s.bin:
-	${AS} $< $@
+	${AS} $<
 
-run:
-	qemu-system-i386 -fda kernel.img
+run: boot.img
+	qemu-system-i386 -fda boot.img
 
 clean:
-	rm -f kernel.img kernel.bin
+	rm -f boot.img boot.bin
 
 .PHONY: all run
