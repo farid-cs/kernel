@@ -1,7 +1,7 @@
 .SUFFIXES: .img .bin
 AS = fasm
 
-all: boot.img
+all: hello-world.img
 
 .bin.img:
 	cp $< $@
@@ -10,10 +10,10 @@ all: boot.img
 .s.bin:
 	${AS} $<
 
-run: boot.img
-	qemu-system-i386 -fda boot.img
+run: hello-world.img
+	qemu-system-i386 -fda hello-world.img
 
 clean:
-	rm -f boot.img boot.bin
+	rm -f hello-world.img hello-world.bin
 
 .PHONY: all run
