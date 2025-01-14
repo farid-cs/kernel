@@ -1,9 +1,9 @@
-org 0x7C00
+org 7C00h
 use16
 
-define VIDEO 0x10
-define TTY_WRITE 0x0E
-define ENDL 13, 10
+define VIDEO 10h
+define TTY_WRITE 0Eh
+define ENDL 0Dh, 0Ah
 
 main:
 	; data segment
@@ -13,7 +13,7 @@ main:
 
 	; stack segment
 	mov ss, ax
-	mov sp, 0x7C00
+	mov sp, 7C00h
 
 	mov si, message
 	call puts
