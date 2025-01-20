@@ -1,9 +1,9 @@
-org 7C00h
+org 0x7C00
 use16
 
-define VIDEO 10h
-define TTY_WRITE 0Eh
-define ENDL 0Dh, 0Ah
+define VIDEO 0x10
+define TTY_WRITE 0x0E
+define ENDL 0x0D, 0x0A
 
 main:
 	; data segment
@@ -13,7 +13,7 @@ main:
 
 	; stack segment
 	mov ss, ax
-	mov sp, 7C00h
+	mov sp, 0x7C00
 
 	mov si, message
 	call puts
@@ -47,4 +47,4 @@ puts:
 message: db 'Hello World', ENDL, 0
 
 times 510 - ($ - $$) db 0
-dw 0AA55h
+dw 0xAA55
