@@ -1,7 +1,7 @@
 .SUFFIXES: .img .bin
 AS = fasm
 
-all: hello-world.img
+all: loader.img
 
 .bin.img:
 	cp $< $@
@@ -10,10 +10,10 @@ all: hello-world.img
 .s.bin:
 	${AS} $<
 
-run: hello-world.img
-	qemu-system-i386 -fda hello-world.img
+run: loader.img
+	qemu-system-i386 -fda loader.img
 
 clean:
-	rm -f hello-world.img hello-world.bin
+	rm -f loader.img loader.bin
 
 .PHONY: all run
